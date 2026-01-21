@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daftar Warga</title>
+    <title>Daftar Warga Kelurahan</title>
 </head>
 <body>
     <h1>Daftar Warga</h1>
-    <a href="{% url 'warga-tambah' %}">Tambah Warga Baru</a>
+    <a href="{% url 'warga-tambah' %}">Tambah Warga Baru</a>  &nbsp;  <a href="{% url 'pengaduan-list' %}">Ke Daftar Pengaduan Warga</a>
     <hr>
-
     <ul>
-        {% for warga in daftar_warga %}
-            <li>
-                <a href="{% url 'warga-detail' warga.id %}">{{ warga.nama_lengkap }}</a> 
-                - {{ warga.alamat }}
-            </li>
+        {% for warga in object_list %}
+            <li><a href="{% url 'warga-detail' warga.pk %}">{{ warga.nama_lengkap }}</a> - NIK: {{ warga.nik }}</li>
         {% empty %}
-            <p>Belum ada data warga.</p>
+            <li>Belum ada data warga yang terdaftar.</li>
         {% endfor %}
     </ul>
 </body>

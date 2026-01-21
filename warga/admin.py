@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Warga
+from .models import Warga,Pengaduan
+# Register your models here.
 
-@admin.register(Warga)
-class WargaAdmin(admin.ModelAdmin):
-    list_display = ('nik', 'nama_lengkap', 'alamat', 'no_telepon', 'tanggal_registrasi')
-    search_fields = ('nama_lengkap', 'nik')
+admin.site.register(Warga)
+admin.site.register(Pengaduan) # Daftarkan model baru

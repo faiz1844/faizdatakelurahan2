@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Semua Pengaduan</title>
+</head>
+<body>
+    <h1>Daftar Semua Pengaduan Warga</h1>
+    <a href="{% url 'pengaduan-tambah' %}">Tambah Pengaduan Baru</a>
+    <hr>
+
+    <ul>
+        {# Nama 'pengaduans' berasal dari context_object_name di View #}
+        {% for aduan in pengaduans %}
+            <li>
+                <h3>{{ aduan.judul }}</h3>
+              
+                <p>
+                    <strong>Status:</strong> {{ aduan.get_status_display }} <br>
+                    
+                    {# INI BAGIAN UTAMA TANTANGANNYA #}
+                    {# Melompat dari model Pengaduan ke model Warga via 'pelapor' #}
+                    <strong>Pelapor:</strong> {{ aduan.pelapor.nama_lengkap }}
+                </p>
+                <p>{{ aduan.deskripsi }}</p>
+            </li>
+             <hr>
+              <a href="{% url 'pengaduan-edit' aduan.pk %}">Edit Data</a> | 
+                <a href="{% url 'pengaduan-hapus' aduan.pk %}">Hapus Data</a>
+               
+            <hr>
+        {% empty %}
+            <li>Belum ada pengaduan sama sekali.</li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{% url 'warga-list' %}">Kembali ke Daftar Warga</a>
+</body>
+</html>

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tambah Warga Baru</title>
+    <title>Tambah Pengaduan Baru</title>
 </head>
 <body>
-    <h1>Form Pendaftaran Warga Baru</h1>
+    <h1>Form Pendaftaran Pengaduan Baru</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Simpan</button>
-        <button><a href="{% url 'warga-list' %}">Kembali ke Daftar Warga</a><button>
+        <button><a href="{% url 'pengaduan-list' %}">Kembali ke Daftar Pengaduan Warga</a><button>
     </form>
 </body>
 </html>
